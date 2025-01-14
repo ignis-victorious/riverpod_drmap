@@ -4,7 +4,7 @@
 
 This repo contains the code for the project covered during the video series of State Management in Flutter w/ Riverpod Code Generation.
 
-Video Series => [Series](https://google.com)
+Video Series => [Coming Soon]()
 
 In the series we cover the following topics:
 
