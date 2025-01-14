@@ -17,4 +17,9 @@ In the series we cover the following topics:
 
 If you find any issues running this project, please send me feedback in the form of an issue so I can address it accordingly.
 
+Let's connect!
+- On [LinkedIn](https://www.linkedin.com/in/roman-jaquez-8941a424/)
+- On [Bluesky](https://bsky.app/profile/romanjaquez.bsky.social)
+- On [X](https://x.com/drcoderz)
+
 Thank  you for your support!
