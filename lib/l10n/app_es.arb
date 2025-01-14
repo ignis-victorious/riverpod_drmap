@@ -1,0 +1,16 @@
+{
+    "showLabel": "Mostrar",
+    "seasLabel": "Mares",
+    "coastalLineLabel": "Línea Costera",
+    "riversLabel": "Ríos",
+    "lakesLabel": "Lagos",
+    "bordersLabel": "Fronteras",
+    "namesLabel": "Nombres",
+    "provincesLabel": "Provincias",
+    "allProvincesLabel": "Todas Las Provincias",
+    "regionsLabel": "Regiones",
+    "noneLabel": "Ninguna",
+    "northLabel": "Norte",
+    "southEastLabel": "Sureste",
+    "southWestLabel": "Suroeste"
+}

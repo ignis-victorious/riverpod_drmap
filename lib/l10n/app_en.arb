@@ -1,0 +1,16 @@
+{
+    "showLabel": "Show",
+    "seasLabel": "Seas",
+    "coastalLineLabel": "Coastal Line",
+    "riversLabel": "Rivers",
+    "lakesLabel": "Lakes",
+    "bordersLabel": "Borders",
+    "namesLabel": "Names",
+    "provincesLabel": "Provinces",
+    "allProvincesLabel": "All Provinces",
+    "regionsLabel": "Regions",
+    "noneLabel": "None",
+    "northLabel": "North",
+    "southEastLabel": "Southeast",
+    "southWestLabel": "Southwest"
+}
