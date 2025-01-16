@@ -13,6 +13,7 @@ class MapRegionsList extends ConsumerWidget {
     final regions = MapRegions.values;
     final selectedRegion = ref.watch(selectedRegionProvider);
     final colorScheme = Theme.of(context).colorScheme;
+    final loc = ref.watch(appLocalizationsProvider);
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -24,7 +25,7 @@ class MapRegionsList extends ConsumerWidget {
       child: Row(
         spacing: 16,
         children: [
-          Text('Regions', style: textTheme.headlineSmall!.copyWith(
+          Text(loc.regionsLabel, style: textTheme.headlineSmall!.copyWith(
             fontWeight: FontWeight.bold,
           )),
 
