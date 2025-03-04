@@ -17,7 +17,7 @@ class DRMap extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedMapAssets = ref.watch(selectedMapAssetsProvider);
     final allProvinces = ref.watch(provincesListProvider);
-    // final selectedProvinces = ref.watch(selectedProvincesProvider);
+    final selectedProvinces = ref.watch(selectedProvincesProvider);
     // final selectedRegion = ref.watch(selectedRegionProvider);
     // final colorScheme = Theme.of(context).colorScheme;
     // final locProvider = ref.watch(appLocalizationsProvider);
@@ -43,15 +43,22 @@ class DRMap extends ConsumerWidget {
         // --- generate the list of provinces
         ...List.generate(allProvinces.length, (index) {
           final province = allProvinces[index];
+          var provinceColor = Color(0xFFFEFEE9);
+          // final provinceColor = Colors.transparent;
           // var provinceColor = colorScheme.onSurface;
 
-          // if (selectedProvinces.contains(province)) {provinceColor = Theme.of(context).brightness == Brightness.light ? Color.fromARGB(200, (index + 1) * 20, (index + 2) * 30, (index + 3) * 40): colorScheme.tertiaryContainer;}else if (selectedRegion.provinces.contains(province.regionCode)) {provinceColor = Colors.green;}
+          if (selectedProvinces.contains(province)) {
+            provinceColor = Color.fromARGB(
+                200, (index + 1) * 20, (index + 2) * 30, (index + 3) * 40);
+            // provinceColor = Theme.of(context).brightness == Brightness.light? Color.fromARGB(200, (index + 1) * 20, (index + 2) * 30, (index + 3) * 40): colorScheme.tertiaryContainer;
+          }
+          // else if (selectedRegion.provinces.contains(province.regionCode)) {provinceColor = Colors.green;}
 
           return SvgPicture.asset(
             './assets/svgs/provinces/${province.code}.svg',
-            colorFilter: ColorFilter.mode(
-                index == 20 ? Colors.red : Colors.white, BlendMode.srcIn),
-            // provinceColor, BlendMode.srcIn),
+            colorFilter: ColorFilter.mode(provinceColor, BlendMode.srcIn),
+
+            // colorFilter: ColorFilter.mode(index == 20 ? Colors.red : Colors.white, BlendMode.srcIn),
           );
         }),
 
