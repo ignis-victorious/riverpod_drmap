@@ -15,4 +15,4 @@ enum MapRegions {
 
   final List<String> provinces;
   const MapRegions(this.provinces);
-}
+} 
