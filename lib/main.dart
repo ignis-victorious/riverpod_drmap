@@ -1,13 +1,13 @@
 //   _________________________
 //  Import LIBRARIES
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 //  Import FILES
 import 'package:dr_map/pages/dr_map.dart';
-import 'package:dr_map/styles/themes.dart';
-import 'package:dr_map/providers/map_providers.dart';
+// import 'package:dr_map/styles/themes.dart';
+// import 'package:dr_map/providers/map_providers.dart';
 //  PARTS
 //  PROVIDERS
 //   _________________________
@@ -17,6 +17,8 @@ import 'package:dr_map/providers/map_providers.dart';
 // https://api.digital.gob.do/v1/territories/regions
 // https://api.digital.gob.do/v1/territories/provinces
 // Docs: https://api.digital.gob.do/v1/territories/provinces
+
+//  Multi-Language Localization in Flutter  --   https://medium.com/@maliaishu1794/multi-language-localization-in-flutter-fe3b46e9c0a9
 
 void main() {
   runApp(ProviderScope(

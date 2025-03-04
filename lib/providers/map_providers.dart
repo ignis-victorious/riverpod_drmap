@@ -292,7 +292,8 @@ List<Province> mockedProvinces(Ref ref) {
 class ProvincesList extends _$ProvincesList {
   @override
   List<Province> build() {
-    return [];
+    return ref.read(mockedProvincesProvider);
+    // return [];
   }
 
   void updateProvinces(List<Province> provinces) {

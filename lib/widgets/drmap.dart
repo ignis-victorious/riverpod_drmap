@@ -25,6 +25,7 @@ class DRMap extends ConsumerWidget {
 
     return Stack(
       children: [
+        // --- generate the islands
         SvgPicture.asset('./assets/svgs/map_assets/baserd.svg'),
         SvgPicture.asset(
           './assets/svgs/provinces/islabeata.svg',
@@ -39,7 +40,7 @@ class DRMap extends ConsumerWidget {
           // colorFilter: ColorFilter.mode(colorScheme.onSurface, BlendMode.srcIn),
         ),
 
-        // generate the list of provinces
+        // --- generate the list of provinces
         ...List.generate(allProvinces.length, (index) {
           final province = allProvinces[index];
           // var provinceColor = colorScheme.onSurface;
@@ -49,7 +50,7 @@ class DRMap extends ConsumerWidget {
           return SvgPicture.asset(
             './assets/svgs/provinces/${province.code}.svg',
             colorFilter: ColorFilter.mode(
-                index == 0 ? Colors.red : Colors.white, BlendMode.srcIn),
+                index == 20 ? Colors.red : Colors.white, BlendMode.srcIn),
             // provinceColor, BlendMode.srcIn),
           );
         }),
@@ -63,6 +64,7 @@ class DRMap extends ConsumerWidget {
           // final assetName = seaOrNames ? '${asset.name}_${locale.languageCode}' : asset.name;
           // final assetColor = seaOrNames ? ColorFilter.mode(colorScheme.surfaceTint, BlendMode.srcIn) : null;
 
+          // --- generate all assets: rivers, names, lakes, etc.
           return SvgPicture.asset(
             './assets/svgs/map_assets/${assetName}.svg',
             // colorFilter: assetColor,

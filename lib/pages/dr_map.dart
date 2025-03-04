@@ -25,7 +25,8 @@ class DRMapApp extends StatelessWidget {
       backgroundColor: Color(0xFFC6ECFF),
       // backgroundColor: colorScheme.surfaceContainer,
       body: Stack(children: <Widget>[
-        InteractiveViewer(clipBehavior: Clip.none, child: DRMap()),
+        Center(
+            child: InteractiveViewer(clipBehavior: Clip.none, child: DRMap())),
         Align(
           alignment: Alignment.topLeft,
           child: MapAssetsList(),
