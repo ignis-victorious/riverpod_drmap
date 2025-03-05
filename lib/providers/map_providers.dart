@@ -2,7 +2,7 @@
 //  Import LIBRARIES
 import 'dart:convert';
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 //  Import FILES
@@ -21,6 +21,7 @@ class SelectedMapAssets extends _$SelectedMapAssets {
   @override
   List<MapAssets> build() {
     return [
+      ////b
       MapAssets.seas,
       MapAssets.coastalLine,
       MapAssets.rivers,
@@ -47,28 +48,31 @@ class SelectedProvinces extends _$SelectedProvinces {
   }
 }
 
-// //   fetchProvincesProvider
-// @riverpod
-// Future<bool> fetchProvinces(Ref ref) async {
-//   try {
-//     String allProvinces = '';
-//     final allProvincesResponse = await http
-//         .get(Uri.parse('https://api.digital.gob.do/v1/territories/provinces'));
-//     if (allProvincesResponse.statusCode == 200) {
-//       allProvinces = allProvincesResponse.body;
-//     }
+//   fetchProvincesProvider
+@riverpod
+Future<bool> fetchProvinces(Ref ref) async {
+// Future<List<Province>> fetchProvinces(Ref ref) async {
+  try {
+    String allProvinces = '';
+    final allProvincesResponse = await http
+        .get(Uri.parse('https://api.digital.gob.do/v1/territories/provinces'));
+    if (allProvincesResponse.statusCode == 200) {
+      allProvinces = allProvincesResponse.body;
+    }
 
-//     final mappedData = ((json.decode(allProvinces)
-//             as Map<String, dynamic>)['data'] as List<dynamic>)
-//         .map((e) => Province.fromJson(e))
-//         .toList();
+    final mappedData = ((json.decode(allProvinces)
+            as Map<String, dynamic>)['data'] as List<dynamic>)
+        .map((e) => Province.fromJson(e))
+        .toList();
 
-//     ref.read(provincesListProvider.notifier).updateProvinces(mappedData);
-//     return true;
-//   } catch (e) {
-//     return Future.error('issue with the data');
-//   }
-// }
+    ref.read(provincesListProvider.notifier).updateProvinces(mappedData);
+    return true;
+  } catch (e) {
+    // } on Exception catch (e) {
+    return Future.error('issue with the data');
+  } // Try
+  // return mappedData;
+}
 
 @riverpod
 List<Province> mockedProvinces(Ref ref) {
@@ -292,8 +296,8 @@ List<Province> mockedProvinces(Ref ref) {
 class ProvincesList extends _$ProvincesList {
   @override
   List<Province> build() {
-    return ref.read(mockedProvincesProvider);
-    // return [];
+    return [];
+    // return ref.read(mockedProvincesProvider);
   }
 
   void updateProvinces(List<Province> provinces) {
@@ -301,6 +305,7 @@ class ProvincesList extends _$ProvincesList {
   }
 }
 
+//  SelectedRegionProvider
 @riverpod
 class SelectedRegion extends _$SelectedRegion {
   @override

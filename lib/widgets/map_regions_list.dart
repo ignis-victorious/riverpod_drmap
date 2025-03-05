@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 //  Import FILES
 import 'package:dr_map/models/enums.dart';
+import '../providers/map_providers.dart';
 //  PARTS
 //  PROVIDERS
 //   _________________________
-
-// import 'package:dr_map/providers/map_providers.dart';
 
 class MapRegionsList extends ConsumerWidget {
   const MapRegionsList({super.key});
@@ -31,7 +30,11 @@ class MapRegionsList extends ConsumerWidget {
       child: Row(
         spacing: 16,
         children: [
-          const Text('Regions: '),
+          Text(
+            'Regions: ',
+            style:
+                textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold),
+          ),
 //           Text(loc.regionsLabel, style: textTheme.headlineSmall!.copyWith(
 //             fontWeight: FontWeight.bold,
 //           )),
@@ -43,7 +46,8 @@ class MapRegionsList extends ConsumerWidget {
               constraints: BoxConstraints(maxWidth: 180),
               child: RadioListTile<MapRegions>(
                   value: region,
-                  title: Text(ref.watch(localizedMapRegionsProvider(region))),
+                  title: Text(region.name),
+                  // title: Text(ref.watch(localizedMapRegionsProvider(region))),
                   groupValue: selectedRegion,
                   onChanged: (value) {
                     ref.read(selectedRegionProvider.notifier).update(value!);

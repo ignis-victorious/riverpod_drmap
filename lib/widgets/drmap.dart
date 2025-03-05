@@ -18,7 +18,7 @@ class DRMap extends ConsumerWidget {
     final selectedMapAssets = ref.watch(selectedMapAssetsProvider);
     final allProvinces = ref.watch(provincesListProvider);
     final selectedProvinces = ref.watch(selectedProvincesProvider);
-    // final selectedRegion = ref.watch(selectedRegionProvider);
+    final selectedRegion = ref.watch(selectedRegionProvider);
     // final colorScheme = Theme.of(context).colorScheme;
     // final locProvider = ref.watch(appLocalizationsProvider);
     // final locale = ref.watch(appLocaleProvider);
@@ -51,8 +51,9 @@ class DRMap extends ConsumerWidget {
             provinceColor = Color.fromARGB(
                 200, (index + 1) * 20, (index + 2) * 30, (index + 3) * 40);
             // provinceColor = Theme.of(context).brightness == Brightness.light? Color.fromARGB(200, (index + 1) * 20, (index + 2) * 30, (index + 3) * 40): colorScheme.tertiaryContainer;
+          } else if (selectedRegion.provinces.contains(province.regionCode)) {
+            provinceColor = Colors.green;
           }
-          // else if (selectedRegion.provinces.contains(province.regionCode)) {provinceColor = Colors.green;}
 
           return SvgPicture.asset(
             './assets/svgs/provinces/${province.code}.svg',
