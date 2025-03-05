@@ -6,23 +6,23 @@ part of 'map_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mockedProvincesHash() => r'ea3b422fb3089603f6e48f78b170912397d93281';
+String _$fetchProvincesHash() => r'9703c9bf769a5f8d350e3fdaf668489778717839';
 
-/// See also [mockedProvinces].
-@ProviderFor(mockedProvinces)
-final mockedProvincesProvider = AutoDisposeProvider<List<Province>>.internal(
-  mockedProvinces,
-  name: r'mockedProvincesProvider',
+/// See also [fetchProvinces].
+@ProviderFor(fetchProvinces)
+final fetchProvincesProvider = AutoDisposeFutureProvider<bool>.internal(
+  fetchProvinces,
+  name: r'fetchProvincesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$mockedProvincesHash,
+      : _$fetchProvincesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef MockedProvincesRef = AutoDisposeProviderRef<List<Province>>;
+typedef FetchProvincesRef = AutoDisposeFutureProviderRef<bool>;
 String _$selectedMapAssetsHash() => r'ec52bac6d8da7ffe14c2ffa0933f4e8ea2767ab5';
 
 /// See also [SelectedMapAssets].
@@ -55,12 +55,12 @@ final selectedProvincesProvider =
 );
 
 typedef _$SelectedProvinces = AutoDisposeNotifier<List<Province>>;
-String _$provincesListHash() => r'7efc1daea0c4b9ff84c3359af3fb8ee46137ca48';
+String _$provincesListHash() => r'8a4950341edb115790142dd9bca3206f168cb772';
 
 /// See also [ProvincesList].
 @ProviderFor(ProvincesList)
 final provincesListProvider =
-    AutoDisposeNotifierProvider<ProvincesList, List<Province>>.internal(
+    NotifierProvider<ProvincesList, List<Province>>.internal(
   ProvincesList.new,
   name: r'provincesListProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -70,7 +70,7 @@ final provincesListProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ProvincesList = AutoDisposeNotifier<List<Province>>;
+typedef _$ProvincesList = Notifier<List<Province>>;
 String _$selectedRegionHash() => r'42f343ed5e070fa193cc1cc7acb7510e1d34c333';
 
 /// See also [SelectedRegion].
