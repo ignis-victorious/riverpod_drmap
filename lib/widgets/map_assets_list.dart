@@ -16,7 +16,7 @@ class MapAssetsList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
-    // final colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     // final loc = ref.watch(appLocalizationsProvider);
 
     return Container(
@@ -25,7 +25,8 @@ class MapAssetsList extends ConsumerWidget {
       width: 300,
       height: 420,
       decoration: BoxDecoration(
-        color: Colors.white, // colorScheme.primaryContainer,
+        color: colorScheme.primaryContainer,
+        // color: Colors.white, // colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(

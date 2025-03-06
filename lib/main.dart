@@ -1,6 +1,7 @@
 //   _________________________
 //  Import LIBRARIES
 // import 'package:intl/intl.dart';
+import 'package:dr_map/styles/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,21 +27,79 @@ void main() {
   ], child: DRMainApp()));
 }
 
-class DRMainApp extends StatelessWidget {
-  const DRMainApp({super.key});
+class DRMainApp extends ConsumerStatefulWidget {
+  const DRMainApp({Key? key}) : super(key: key);
+
+  @override
+  _DRMainAppState createState() => _DRMainAppState();
+}
+
+class _DRMainAppState extends ConsumerState<DRMainApp>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      updateAppTheme();
+    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp){ref.read(fetchProvincesProvider.notifier).fetchProvinces});
+  }
+
+  void updateAppTheme() {
+    var brightness = View.of(context).platformDispatcher.platformBrightness;
+    ref.read(appThemeProvider.notifier).update(
+        brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    updateAppTheme();
+    super.didChangePlatformBrightness();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = ref.watch(appThemeProvider);
+
     return MaterialApp(
       title: 'Dominic Republic Website - Map Application',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-      ),
+      themeMode: appTheme,
+      // themeMode: ThemeMode.dark,
+      theme: MapAppTheme.lightTheme,
+      darkTheme: MapAppTheme.darkTheme,
+      // theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),),
       home: const DRMapApp(),
     );
   }
 }
+
+// class DRDRMainAppApp extends ConsumerWidget {
+//   const DRMainApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final appTheme = ref.watch(appThemeProvider);
+
+//     return MaterialApp(
+//       title: 'Dominic Republic Website - Map Application',
+//       debugShowCheckedModeBanner: false,
+//       themeMode: appTheme,
+//       // themeMode: ThemeMode.dark,
+//       theme: MapAppTheme.lightTheme,
+//       darkTheme: MapAppTheme.darkTheme,
+//       // theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),),
+//       home: const DRMapApp(),
+//     );
+//   }
+// }
 
 
 

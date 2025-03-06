@@ -344,20 +344,20 @@ class AppTheme extends _$AppTheme {
   }
 }
 
-class SupportLocales {
-  static const en = Locale('en', 'en_US');
-  static const es = Locale('es', 'ES');
-}
+// class SupportLocales {
+//   static const en = Locale('en', 'en_US');
+//   static const es = Locale('es', 'ES');
+// }
 
-@riverpod
-class AppLocale extends _$AppLocale {
-  @override
-  Locale build() => SupportLocales.es;
+// @riverpod
+// class AppLocale extends _$AppLocale {
+//   @override
+//   Locale build() => SupportLocales.es;
 
-  void update(Locale locale) {
-    state = locale;
-  }
-}
+//   void update(Locale locale) {
+//     state = locale;
+//   }
+// }
 
 // //  appLocalizationsProvider
 // @riverpod

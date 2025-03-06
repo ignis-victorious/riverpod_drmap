@@ -25,6 +25,7 @@ class MapRegionsList extends ConsumerWidget {
       width: MediaQuery.sizeOf(context).width / 2,
       decoration: BoxDecoration(
         color: colorScheme.primaryContainer,
+        // color: Colors.white,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(

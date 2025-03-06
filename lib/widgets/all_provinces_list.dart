@@ -15,7 +15,7 @@ class AllProvincesList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final allProvinces = ref.watch(provincesListProvider);
     final textTheme = Theme.of(context).textTheme;
-    // final colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 //     final loc = ref.watch(appLocalizationsProvider);
 
     return Container(
@@ -23,8 +23,8 @@ class AllProvincesList extends ConsumerWidget {
       margin: EdgeInsets.all(16),
       width: 300,
       decoration: BoxDecoration(
-        color: Colors.white,
-        // color: colorScheme.primaryContainer,
+        color: colorScheme.primaryContainer,
+        // color: Colors.white,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
