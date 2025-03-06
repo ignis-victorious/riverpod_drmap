@@ -8,9 +8,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 //  Import FILES
 import '../models/enums.dart';
 import '../models/province.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations_en.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations_es.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations_en.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations_es.dart';
 //  PARTS
 part 'map_providers.g.dart';
 //  PROVIDERS
@@ -344,57 +344,62 @@ class AppTheme extends _$AppTheme {
   }
 }
 
-// class SupportLocales {
-//   static const en = Locale('en', 'en_US');
-//   static const es = Locale('es', 'ES');
-// }
+class SupportLocales {
+  static const en = Locale('en', 'en_US');
+  static const es = Locale('es', 'ES');
+}
 
-// @riverpod
-// class AppLocale extends _$AppLocale {
-//   @override
-//   Locale build() => SupportLocales.es;
+@riverpod
+class AppLocale extends _$AppLocale {
+  @override
+  Locale build() => SupportLocales.es;
+  // Locale build() => SupportLocales.en;
 
-//   void update(Locale locale) {
-//     state = locale;
-//   }
-// }
+  void update(Locale locale) {
+    state = locale;
+  }
+}
 
-// //  appLocalizationsProvider
-// @riverpod
-// AppLocalizations appLocalizations(Ref ref) {
-//   AppLocalizations appLocalizations;
+//  appLocalizationsProvider
+@riverpod
+AppLocalizations appLocalizations(Ref ref) {
+  AppLocalizations appLocalizations;
 
-//   try {
-//     appLocalizations = lookupAppLocalizations(ref.watch(appLocaleProvider));
-//   } on FlutterError {
-//     appLocalizations = AppLocalizationsEs();
-//   }
+  try {
+    appLocalizations = lookupAppLocalizations(ref.watch(appLocaleProvider));
+  } on FlutterError {
+    appLocalizations = AppLocalizationsEs();
+    // appLocalizations = AppLocalizationsEn();
+  }
 
-//   return appLocalizations;
-// }
+  return appLocalizations;
+}
 
-// @riverpod
-// String localizedMapAssets(Ref ref, MapAssets asset) {
-//   final loc = ref.watch(appLocalizationsProvider);
+//  localizedMapAssetsProvider
+@riverpod
+String localizedMapAssets(Ref ref, MapAssets asset) {
+  final loc = ref.watch(appLocalizationsProvider);
 
-//   return switch (asset) {
-//     MapAssets.seas => loc.seasLabel,
-//     MapAssets.coastalLine => loc.coastalLineLabel,
-//     MapAssets.rivers => loc.riversLabel,
-//     MapAssets.lakes => loc.lakesLabel,
-//     MapAssets.borders => loc.bordersLabel,
-//     MapAssets.names => loc.namesLabel,
-//   };
-// }
+  return switch (asset) {
+    MapAssets.seas => loc.seasLabel,
+    MapAssets.coastalLine => loc.coastalLineLabel,
+    MapAssets.rivers => loc.riversLabel,
+    MapAssets.lakes => loc.lakesLabel,
+    MapAssets.borders => loc.bordersLabel,
+    MapAssets.names => loc.namesLabel,
+  };
+}
 
-// @riverpod
-// String localizedMapRegions(Ref ref, MapRegions region) {
-//   final loc = ref.watch(appLocalizationsProvider);
 
-//   return switch (region) {
-//     MapRegions.none => loc.noneLabel,
-//     MapRegions.north => loc.northLabel,
-//     MapRegions.southEast => loc.southEastLabel,
-//     MapRegions.southWest => loc.southWestLabel,
-//   };
-// }
+//  localizedMapRegionsProvider
+@riverpod
+String localizedMapRegions(Ref ref, MapRegions region) {
+  final loc = ref.watch(appLocalizationsProvider);
+
+  return switch (region) {
+    MapRegions.none => loc.noneLabel,
+    MapRegions.north => loc.northLabel,
+    MapRegions.southEast => loc.southEastLabel,
+    MapRegions.southWest => loc.southWestLabel,
+  };
+}

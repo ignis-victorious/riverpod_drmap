@@ -17,7 +17,7 @@ class MapAssetsList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    // final loc = ref.watch(appLocalizationsProvider);
+    final loc = ref.watch(appLocalizationsProvider);
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -33,11 +33,11 @@ class MapAssetsList extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16,
         children: [
-          Text('show',
+          // Text('show',style: textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold,)),
+          Text(loc.showLabel,
               style: textTheme.headlineSmall!.copyWith(
                 fontWeight: FontWeight.bold,
               )),
-          // Text(loc.showLabel,style: textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold,)),
           Expanded(
             child: Consumer(builder: (context, ref, child) {
               final selectedMapAssets = ref.watch(selectedMapAssetsProvider);
@@ -50,8 +50,9 @@ class MapAssetsList extends ConsumerWidget {
 
                   return CheckboxListTile(
                       value: assetValue,
-                      title: Text(mapAsset.name),
-                      // title:Text(ref.watch(localizedMapAssetsProvider(mapAsset))),
+                      title:
+                          Text(ref.watch(localizedMapAssetsProvider(mapAsset))),
+                      // title: Text(mapAsset.name),
                       onChanged: (value) {
                         if (value!) {
                           selectedMapAssets.add(mapAsset);

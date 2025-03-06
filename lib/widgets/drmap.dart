@@ -20,8 +20,8 @@ class DRMap extends ConsumerWidget {
     final selectedProvinces = ref.watch(selectedProvincesProvider);
     final selectedRegion = ref.watch(selectedRegionProvider);
     final colorScheme = Theme.of(context).colorScheme;
-    // final locProvider = ref.watch(appLocalizationsProvider);
-    // final locale = ref.watch(appLocaleProvider);
+    final locProvider = ref.watch(appLocalizationsProvider);
+    final locale = ref.watch(appLocaleProvider);
 
     return Stack(
       children: [
@@ -69,7 +69,9 @@ class DRMap extends ConsumerWidget {
           final asset = selectedMapAssets[index];
           final seaOrNames =
               asset == MapAssets.seas || asset == MapAssets.names;
-          final assetName = seaOrNames ? '${asset.name}_en' : asset.name;
+          final assetName =
+              seaOrNames ? '${asset.name}_${locale.languageCode}' : asset.name;
+          // final assetName = seaOrNames ? '${asset.name}_en' : asset.name;
           // final assetName = asset == MapAssets.seas || asset == MapAssets.names? '${asset.name}_en': asset.name;
           final assetColor = seaOrNames
               ? ColorFilter.mode(colorScheme.surfaceTint, BlendMode.srcIn)

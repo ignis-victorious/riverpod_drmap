@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //  Import FILES
 import '../providers/map_providers.dart';
 import '../widgets/all_provinces_list.dart';
+import '../widgets/app_lang_switch.dart';
 import '../widgets/drmap.dart';
 import '../widgets/map_assets_list.dart';
 import '../widgets/map_regions_list.dart';
@@ -49,8 +50,14 @@ class DRMapApp extends StatelessWidget {
                       ),
                       Align(
                         alignment: Alignment.bottomLeft,
-                        child: AppThemeSwitch(),
-                      ),
+                        child: Row(
+                          spacing: 32,
+                          children: <Widget>[
+                            AppThemeSwitch(),
+                            AppLangSwitch(),
+                          ],
+                        ),
+                      )
                     ],
                   );
                 },

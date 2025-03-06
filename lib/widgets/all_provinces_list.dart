@@ -16,7 +16,7 @@ class AllProvincesList extends ConsumerWidget {
     final allProvinces = ref.watch(provincesListProvider);
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-//     final loc = ref.watch(appLocalizationsProvider);
+    final loc = ref.watch(appLocalizationsProvider);
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -31,14 +31,11 @@ class AllProvincesList extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16,
         children: [
-          Text(
-            'Provinces',
-            style:
-                textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold),
-          ),
-//           Text(loc.provincesLabel, style: textTheme.headlineSmall!.copyWith(
-//             fontWeight: FontWeight.bold,
-//           )),
+          Text(loc.provincesLabel,
+              style: textTheme.headlineSmall!.copyWith(
+                fontWeight: FontWeight.bold,
+              )),
+          // Text('Provinces',style:textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold),),
           Expanded(
             child: ListView.builder(
               itemCount: allProvinces.length,
@@ -70,8 +67,8 @@ class AllProvincesList extends ConsumerWidget {
               return CheckboxListTile(
                 value: allProvinces.length ==
                     ref.watch(selectedProvincesProvider).length,
-                title: Text('All Provinces'),
-                // title: Text(loc.allProvincesLabel),
+                title: Text(loc.allProvincesLabel),
+                // title: Text('All Provinces'),
                 onChanged: (value) {
                   if (value!) {
                     ref.read(selectedProvincesProvider.notifier).update(

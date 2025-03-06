@@ -1,12 +1,12 @@
 //   _________________________
 //  Import LIBRARIES
-// import 'package:intl/intl.dart';
 import 'package:dr_map/styles/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 //  Import FILES
 import 'package:dr_map/pages/dr_map.dart';
+import 'package:intl/intl.dart';
 import 'providers/map_providers.dart';
 // import 'package:dr_map/styles/themes.dart';
 //  PARTS
@@ -67,10 +67,22 @@ class _DRMainAppState extends ConsumerState<DRMainApp>
   @override
   Widget build(BuildContext context) {
     final appTheme = ref.watch(appThemeProvider);
+    final selectedLocale = ref.watch(appLocaleProvider);
 
     return MaterialApp(
       title: 'Dominic Republic Website - Map Application',
       debugShowCheckedModeBanner: false,
+      locale: selectedLocale,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        ...AppLocalizations.localizationsDelegates,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        Intl.defaultLocale = selectedLocale.toLanguageTag();
+        return selectedLocale;
+      },
+      supportedLocales: AppLocalizations.supportedLocales,
+
       themeMode: appTheme,
       // themeMode: ThemeMode.dark,
       theme: MapAppTheme.lightTheme,
@@ -80,27 +92,6 @@ class _DRMainAppState extends ConsumerState<DRMainApp>
     );
   }
 }
-
-// class DRDRMainAppApp extends ConsumerWidget {
-//   const DRMainApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final appTheme = ref.watch(appThemeProvider);
-
-//     return MaterialApp(
-//       title: 'Dominic Republic Website - Map Application',
-//       debugShowCheckedModeBanner: false,
-//       themeMode: appTheme,
-//       // themeMode: ThemeMode.dark,
-//       theme: MapAppTheme.lightTheme,
-//       darkTheme: MapAppTheme.darkTheme,
-//       // theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),),
-//       home: const DRMapApp(),
-//     );
-//   }
-// }
-
 
 
 
@@ -115,70 +106,3 @@ class _DRMainAppState extends ConsumerState<DRMainApp>
 
 
 
-
-
-
-// class DRMainApp extends ConsumerStatefulWidget {
-//   const DRMainApp({super.key});
-
-//   @override
-//   DRMainAppState createState() => DRMainAppState();
-// }
-
-// class DRMainAppState extends ConsumerState<DRMainApp> with WidgetsBindingObserver {
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     WidgetsBinding.instance.addObserver(this);
-
-//     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-//       updateAppTheme();
-//     });
-//   }
-
-//   void updateAppTheme() {
-//     var brightness = View.of(context).platformDispatcher.platformBrightness;
-//     ref.read(appThemeProvider.notifier).update(
-//       brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light
-//     );
-//   }
-
-//   @override
-//   void didChangePlatformBrightness() {
-//     super.didChangePlatformBrightness();
-//     updateAppTheme();
-//   }
-
-
-//   @override 
-//   void dispose() {
-//     WidgetsBinding.instance.removeObserver(this);
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     final appTheme = ref.watch(appThemeProvider);
-//     final selectedLocale = ref.watch(appLocaleProvider);
-
-//      return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       locale: selectedLocale,
-//       localizationsDelegates: const [
-//         AppLocalizations.delegate,
-//         ...AppLocalizations.localizationsDelegates,
-//       ],
-//       localeResolutionCallback: (locale, supportedLocales) {
-//         Intl.defaultLocale = selectedLocale.toLanguageTag();
-//         return selectedLocale;
-//       },
-//       supportedLocales: AppLocalizations.supportedLocales,
-//       home: DRMapApp(),
-//       themeMode: appTheme,
-//       theme: MapAppTheme.lightTheme,
-//       darkTheme: MapAppTheme.darkTheme,
-//     );
-//   }
-// }
