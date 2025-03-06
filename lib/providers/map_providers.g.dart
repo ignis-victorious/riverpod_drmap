@@ -23,6 +23,23 @@ final fetchProvincesProvider = AutoDisposeFutureProvider<bool>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef FetchProvincesRef = AutoDisposeFutureProviderRef<bool>;
+String _$mockedProvincesHash() => r'f724673fcfdeb2a3d46d96817bbb4b7a2b5ee5a2';
+
+/// See also [mockedProvinces].
+@ProviderFor(mockedProvinces)
+final mockedProvincesProvider = AutoDisposeFutureProvider<bool>.internal(
+  mockedProvinces,
+  name: r'mockedProvincesProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$mockedProvincesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef MockedProvincesRef = AutoDisposeFutureProviderRef<bool>;
 String _$selectedMapAssetsHash() => r'ec52bac6d8da7ffe14c2ffa0933f4e8ea2767ab5';
 
 /// See also [SelectedMapAssets].
